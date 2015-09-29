@@ -1,0 +1,11 @@
+name: weave-scope
+summary: deploys weave scope
+description: Deliver Weave Scope to visualize your containers.
+maintainers:
+    - Charles Butler <charles.butler@canonical.com>
+tags:
+    - application
+    - docker
+provides:
+  website:
+    interface: http
