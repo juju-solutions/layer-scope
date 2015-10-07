@@ -164,7 +164,7 @@ case "$COMMAND" in
             WEAVESCOPE_DNS_ARGS="$WEAVESCOPE_DNS_ARGS --dns $DOCKER_BRIDGE_IP --searchpath $DOMAINNAME"
         fi
 
-        CONTAINER=$(docker run --privileged -d --name=$SCOPE_CONTAINER_NAME --net=host --pid=host \
+        CONTAINER=$(docker run --restart always --privileged -d --name=$SCOPE_CONTAINER_NAME --net=host --pid=host \
             -v /var/run/docker.sock:/var/run/docker.sock \
             $WEAVESCOPE_DOCKER_ARGS $SCOPE_IMAGE $WEAVESCOPE_DNS_ARGS $SCOPE_ARGS --probe.docker true "$@")
 
