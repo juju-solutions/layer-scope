@@ -6,7 +6,7 @@ intuitively understand, monitor, and control your applications.
 
 ### Charm Layer
 
-This is a reactive, composable charm layer. In order to generate this charm you
+This is a reactive, buildable charm layer. In order to generate this charm you
 must have:
 
 - charm-tools >= 1.6.1
