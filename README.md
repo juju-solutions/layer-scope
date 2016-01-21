@@ -11,11 +11,20 @@ must have:
 
 - charm-tools >= 1.6.1
 
-    charm refresh -o /path/to/juju_repository
+    charm build -o $JUJU_REPOSITORY
 
-### Deploy the refreshed charm
+### Deploy the assembled charm
 
     juju deploy local:trusty/weave-scope
+
+### Pin the weave-scope version
+
+    juju set weave-scope version=0.6.0
+
+the `version` configuration option accepts the format of the container tag
+publised by the weave scope maintainers.
+
+valid values can be found on [docker hub](https://hub.docker.com/r/weaveworks/scope/tags/)
 
 ### Place scope behind a load balancer
 
