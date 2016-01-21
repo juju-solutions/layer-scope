@@ -25,7 +25,7 @@ def upgrade_charm():
 @when('docker.available')
 def install_scope():
     copyfile('scripts/scope', '/usr/local/bin/scope')
-    chmod('/usr/local/bin/scope', 0755)
+    chmod('/usr/local/bin/scope', 0o755)
     reactive.set_state('scope.available')
 
 
