@@ -3,7 +3,7 @@ from charmhelpers.core import unitdata
 from charmhelpers.core.templating import render
 
 from charms import reactive
-from charms.docker import Compose
+from charms.docker.compose import Compose
 from charms.reactive import hook
 from charms.reactive import when
 from charms.reactive import when_not
@@ -21,7 +21,7 @@ def upgrade_charm():
 
 @when('docker.available')
 def install_scope():
-    render('docker-compose.yml', 'files/scope/docker-compose.yml', config())
+    render('docker-compose.yml', 'files/scope/docker-compose.yml', config)
     reactive.set_state('scope.available')
 
 

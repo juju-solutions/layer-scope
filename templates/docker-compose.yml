@@ -1,5 +1,5 @@
 scope:
-  image: weaveworks/scope{%- if version -%}:{{version}}{%- endif -%}
+  image: weaveworks/scope{%- if version -%}:{{version}}{%- endif %}
   privileged: true
   net: host
   pid: host
