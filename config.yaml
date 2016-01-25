@@ -1,0 +1,5 @@
+options:
+  version:
+    type: string
+    default:
+    description: Version of the weaveworks scope container image

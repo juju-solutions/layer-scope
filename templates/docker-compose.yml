@@ -1,0 +1,10 @@
+scope:
+  image: weaveworks/scope{%- if version -%}:{{version}}{%- endif %}
+  privileged: true
+  net: host
+  pid: host
+  ports:
+    - 4040:4040
+  volumes:
+    - /var/run:/var/run:rw
+  command: --probe.docker true

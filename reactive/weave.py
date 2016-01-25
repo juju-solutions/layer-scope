@@ -1,12 +1,9 @@
-import shlex
-from shutil import copyfile
-from subprocess import check_call
-from os import chmod
-
 from charmhelpers.core import hookenv
 from charmhelpers.core import unitdata
+from charmhelpers.core.templating import render
 
 from charms import reactive
+from charms.docker.compose import Compose
 from charms.reactive import hook
 from charms.reactive import when
 from charms.reactive import when_not
@@ -24,16 +21,15 @@ def upgrade_charm():
 
 @when('docker.available')
 def install_scope():
-    copyfile('scripts/scope', '/usr/local/bin/scope')
-    chmod('/usr/local/bin/scope', 0o755)
+    render('docker-compose.yml', 'files/scope/docker-compose.yml', config)
     reactive.set_state('scope.available')
 
 
 @when('scope.available')
 @when_not('scope.started')
 def run_scope():
-    cmd = '/usr/local/bin/scope launch'
-    check_call(shlex.split(cmd))
+    compose = Compose('files/scope')
+    compose.up()
     hookenv.open_port(4040)
     hookenv.status_set('active', 'Weave Started. Visit me on port 4040')
     reactive.set_state('scope.started')
@@ -48,13 +44,14 @@ def configure_website_port(http):
     '''
     serve_port = 4040
     http.configure(port=serve_port)
-    hookenv.status_set('active', 'Weave started. Visit me on the load balancer')
+    hookenv.status_set('active', 'related to load balancer/reverse proxy')
     hookenv.status_set('active', '')
 
 
 def stop_scope():
-    cmd = '/usr/local/bin/scope stop'
-    check_call(shlex.split(cmd))
+    compose = Compose('files/scope')
+    compose.kill()
+    compose.rm()
     hookenv.close_port(4040)
     reactive.remove_state('scope.started')
     hookenv.status_set('maintenance', 'Weave stopped.')
