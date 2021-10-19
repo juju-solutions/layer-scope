@@ -1,5 +1,24 @@
 # Weave Scope
 
+**Note:** This repository hasn't been updated in a while.
+It might or might not work for you. We are keeping it around for informational purposes.
+
+For up-to-date documentation around products and projects started by Weaveworks, please refer to:
+
+Weaveworks products: <https://weave.works/docs>
+
+Open Source projects started at Weaveworks:
+
+- Cortex (CNCF): <https://cortexmetrics.io/docs>
+- Flagger (CNCF): <https://docs.flagger.app>
+- Flux (CNCF): <https://fluxcd.io/docs>
+- Grafanalib: <https://grafanalib.rtfd.org>
+- Ignite: <https://ignite.rtfd.org>
+- Weave GitOps: <https://docs.gitops.weave.works>
+- wksctl: <https://wksctl.rtfd.org>
+
+---
+
 Weave Scope automatically generates a map of your containers, enabling you to
 intuitively understand, monitor, and control your applications.
 
